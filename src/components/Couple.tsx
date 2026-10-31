@@ -104,7 +104,7 @@ function Portrait({
         <div className="relative aspect-square overflow-hidden rounded-full">
           <Image
             src={person.portrait}
-            alt={`Illustrated portrait of ${person.short} (${person.formal})`}
+            alt={`Illustrated portrait of ${person.primary} (${person.secondary})`}
             width={760}
             height={760}
             /* Eager: the picture must already be decoded when the circle
@@ -130,7 +130,7 @@ function Portrait({
 
       <SplitText
         as="p"
-        text={person.short}
+        text={person.primary}
         stagger={0.04}
         foil
         className="font-bride-display mt-12 text-4xl leading-none sm:text-5xl"
@@ -138,7 +138,7 @@ function Portrait({
 
       <Reveal i={1} className="mt-2">
         <p className="font-bride-script text-2xl text-blush-200/85 sm:text-3xl">
-          {person.formal}
+          {person.secondary}
         </p>
       </Reveal>
 

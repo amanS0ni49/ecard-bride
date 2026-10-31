@@ -188,6 +188,9 @@ function Card({ ritual, index }: { ritual: RitualItem; index: number }) {
             width={700}
             height={560}
             sizes="(max-width: 768px) 78vw, 330px"
+            /* Portrait photographs lose a lot to a landscape card; `focus`
+               pulls the crop towards the faces. Centre when unset. */
+            style={{ objectPosition: ritual.focus ?? "50% 50%" }}
             className="size-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
           />
           <span

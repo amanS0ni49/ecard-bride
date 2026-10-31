@@ -13,7 +13,7 @@ export default function Footer() {
         <Marquee
           baseVelocity={-18}
           items={[
-            "Guddu & Avi",
+            "Janhavi & Bhavesh",
             "20 · 11 · 2026",
             "Bhakhar Paradise, Jaipur",
             meta.occasion,
@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-3xl px-5 py-20 text-center sm:py-24">
         <SplitText
           as="p"
-          text={`${couple.bride.short} & ${couple.groom.short}`}
+          text={`${couple.bride.primary} & ${couple.groom.primary}`}
           stagger={0.05}
           foil
           className="font-bride-display block text-5xl leading-none sm:text-7xl"

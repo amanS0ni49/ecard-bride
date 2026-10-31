@@ -141,35 +141,41 @@ it is. Swap the file and update `ratio` to match.
 `public/festivities/*.png` are illustrated scenes, mapped to rituals in
 `src/lib/data.ts`. Swap the files or repoint `image` / `imageAlt` there.
 
-### The music, and swapping in a real song
+### The music
 
-`public/audio/wedding-theme.wav` is an **original royalty-free instrumental
-written for this project** — a soothing North-Indian wedding cue: a tanpura
-drone under a santoor pluck, a harmonium pad and a slow bansuri line, in a
-Khamaj-ish mode at 70 BPM. Regenerate or edit it with:
+Playing: **`public/audio/gulaab.mp3`** — a 35-second, 320 kbps clip of
+"Baghan Vichon Main Te Tode Tere Layi Gulaab Ve" (Alfaaz / Hamza Malik),
+supplied by the family for their own invitation.
+
+It loops, so it restarts audibly after ~35 seconds. That is what a song clip
+does; only a purpose-composed loop joins seamlessly. If the restart bothers
+you, either use a longer clip that ends near a phrase boundary, or switch back
+to the instrumental below.
+
+Also in the repo: **`public/audio/wedding-theme.wav`**, an original
+royalty-free North-Indian wedding cue written for this card — a tanpura drone
+under a santoor pluck, a harmonium pad and a slow bansuri line, Khamaj-ish at
+70 BPM. It is a 27.4-second *seamless* loop (the render overruns the loop and
+folds the tail back over the head, so there is no click at the wrap).
+Regenerate or edit it with:
 
 ```bash
 python3 scripts/generate-music.py
 ```
 
-It is a 27.4-second seamless loop (the render overruns the loop and folds the
-tail back over the head, so there is no click at the wrap).
-
-**To use an actual song instead** — put the file in `public/audio/` and change
-one line at the top of `src/lib/audio.ts`:
+**Switching tracks is one line** at the top of `src/lib/audio.ts`:
 
 ```ts
-const SRC = "/audio/your-song.mp3";
+const SRC = "/audio/wedding-theme.wav";
 ```
 
-That is the whole change. An `.mp3` will be far smaller than the bundled
-`.wav`, and nothing else needs touching.
+Volume (`VOLUME`, currently `0.32`) and the fade length live beside it.
 
-One caution, so the decision is yours and informed: commercial film and folk
-recordings are copyrighted in both the recording *and* the underlying tune.
-For a private invitation link shared with family this is rarely an issue in
-practice. If the page is public or indexed, prefer a licensed track, a
-royalty-free one, or the instrumental above.
+One note so the decision stays an informed one: commercial recordings are
+copyrighted in both the recording *and* the underlying composition. For a
+private invitation link shared with family this is rarely an issue in
+practice. If the page is made public or search-indexed, prefer a licensed
+track or the royalty-free instrumental above.
 
 ### The share preview
 

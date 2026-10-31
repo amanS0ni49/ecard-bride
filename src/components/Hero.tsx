@@ -135,7 +135,7 @@ export default function Hero({ started }: { started: boolean }) {
               active={started}
               delay={0.6}
               stagger={0.05}
-              text={couple.bride.short}
+              text={couple.bride.primary}
               foil
               className="font-bride-display block text-[3.6rem] leading-[0.95] sm:text-[6rem] md:text-[7.5rem]"
             />
@@ -146,7 +146,7 @@ export default function Hero({ started }: { started: boolean }) {
               animate={animate}
               className="font-bride-serif mt-1 text-xs tracking-[0.42em] text-blush-300/70 uppercase sm:text-sm"
             >
-              {couple.bride.formal}
+              {couple.bride.secondary}
             </motion.p>
           </motion.div>
 
@@ -167,7 +167,7 @@ export default function Hero({ started }: { started: boolean }) {
               active={started}
               delay={0.95}
               stagger={0.05}
-              text={couple.groom.short}
+              text={couple.groom.primary}
               foil
               className="font-bride-display block text-[3.6rem] leading-[0.95] sm:text-[6rem] md:text-[7.5rem]"
             />
@@ -178,7 +178,7 @@ export default function Hero({ started }: { started: boolean }) {
               animate={animate}
               className="font-bride-serif mt-1 text-xs tracking-[0.42em] text-blush-300/70 uppercase sm:text-sm"
             >
-              {couple.groom.formal}
+              {couple.groom.secondary}
             </motion.p>
           </motion.div>
         </div>

@@ -28,7 +28,7 @@ export default function Rsvp() {
   const message = useMemo(() => {
     const chosen = rituals.filter((r) => picked.includes(r.id)).map((r) => r.name);
     const lines = [
-      "Namaste! RSVP for Guddu & Avi's wedding.",
+      "Namaste! RSVP for Janhavi & Bhavesh's wedding.",
       "",
       `Name: ${name.trim() || "—"}`,
       coming

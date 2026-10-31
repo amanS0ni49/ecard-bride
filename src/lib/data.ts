@@ -1,5 +1,5 @@
 /**
- * THE BRIDE'S SIDE — the Roda family card (Guddu / Janhavi, Jaipur).
+ * THE BRIDE'S SIDE — the Roda family card (Janhavi / Guddu, Jaipur).
  *
  * Every word here is translated from the printed bride-side invitation
  * ("Guddu - Avi.pdf"). The groom's side is a different card with a different
@@ -19,10 +19,18 @@ export const meta = {
   occasionEnglish: "The Auspicious Wedding Celebration",
 } as const;
 
+/**
+ * `primary` is the name set large everywhere on the card; `secondary` is the
+ * one that sits under it in script and in brackets. The printed invitation
+ * leads with the pet names — Guddu (Janhavi), Avi (Bhavesh) — but the family
+ * asked for the given names to lead on the site, so the two are the other way
+ * round here. Swap the values back in this one place to reverse it; nothing
+ * else in the card needs to change.
+ */
 export const couple = {
   bride: {
-    short: "Guddu",
-    formal: "Janhavi",
+    primary: "Janhavi",
+    secondary: "Guddu",
     honorific: "Ayushmati",
     role: "The Bride",
     side: "Vadhu Paksh",
@@ -35,8 +43,8 @@ export const couple = {
     ],
   },
   groom: {
-    short: "Avi",
-    formal: "Bhavesh",
+    primary: "Bhavesh",
+    secondary: "Avi",
     honorific: "Ayushman",
     role: "The Groom",
     side: "Var Paksh",
@@ -102,6 +110,13 @@ export type RitualItem = {
   venue: string;
   image: string;
   imageAlt: string;
+  /**
+   * CSS object-position for the card crop, e.g. "50% 38%". The cards are
+   * landscape, so a portrait photograph gets a horizontal band taken out of
+   * its middle; set this to pull the crop towards the faces. Defaults to
+   * centre when omitted.
+   */
+  focus?: string;
   /** Calendar block in UTC — the ICS builder reads these directly. */
   calStart: string;
   calEnd: string;
@@ -127,7 +142,7 @@ export const rituals: RitualItem[] = [
       "Hands on the stone chakki, the first grain ground together — this is where the household begins to turn towards the wedding.",
     venue: "At the residence — Om Niwas, Jaipur",
     image: "/festivities/vivah-hath.png",
-    imageAlt: "Guddu and Avi turning the stone chakki together",
+    imageAlt: "Janhavi and Bhavesh turning the stone chakki together",
     calStart: "20261110T093000Z",
     calEnd: "20261110T113000Z",
   },
@@ -159,7 +174,7 @@ export const rituals: RitualItem[] = [
       "Turmeric on the hands, marigolds everywhere, and absolutely no chance of staying clean. Wear something you don't love.",
     venue: "Bhakhar Paradise, Jaipur",
     image: "/festivities/haldi-2.png",
-    imageAlt: "Guddu glowing with haldi, surrounded by marigolds",
+    imageAlt: "Janhavi glowing with haldi, surrounded by marigolds",
     calStart: "20261119T043000Z",
     calEnd: "20261119T073000Z",
   },
@@ -222,8 +237,11 @@ export const rituals: RitualItem[] = [
     blurb:
       "The groom's procession reaches our gate — band, dhol, lights and the whole street watching. Be outside for this one.",
     venue: "Bhakhar Paradise, Jaipur",
-    image: "/festivities/carnival.png",
-    imageAlt: "The baraat arriving with music and lights",
+    image: "/festivities/swagat-baraat.jpg",
+    imageAlt:
+      "The groom arriving on a decorated white horse as the tilak is applied at the gate",
+    // portrait photograph in a landscape card — bias the crop up to the faces
+    focus: "50% 38%",
     calStart: "20261120T140000Z",
     calEnd: "20261120T150000Z",
   },
@@ -239,7 +257,7 @@ export const rituals: RitualItem[] = [
       "Seven rounds of the sacred fire, one hand placed in another, and a promise that outlasts the night.",
     venue: "Bhakhar Paradise, Jaipur",
     image: "/festivities/paanigrahan.png",
-    imageAlt: "Guddu and Avi hand in hand before the sacred fire",
+    imageAlt: "Janhavi and Bhavesh hand in hand before the sacred fire",
     calStart: "20261120T153000Z",
     calEnd: "20261120T183000Z",
   },
@@ -333,7 +351,7 @@ export const families = [
     id: "swagatkarta",
     title: "Swagatkarta",
     english: "Your Hosts & Welcome",
-    members: ["Rajesh Roda", "Lalit Roda", "Aman Kumar Roda"],
+    members: ["Rajesh Roda", "Lalit Roda", "Aman Soni"],
   },
   {
     id: "darshanabhilashi",
@@ -401,7 +419,7 @@ export const baalManuhar = {
 /** The "Preshak" block from the back of the envelope. */
 export const sender = {
   label: "Sent with love by",
-  names: ["Sajjan Kumar", "Makkhanlal", "Rajesh Kumar", "Aman Kumar Roda"],
+  names: ["Sajjan", "Makkhanlal", "Rajesh", "Aman Soni"],
   address: ["Plot No. 30, Chand Nagar Vistar", "Gokulpura, Jhotwara, Jaipur"],
   phones: [
     { display: "94144 33143", tel: "+919414433143" },

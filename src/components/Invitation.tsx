@@ -82,8 +82,8 @@ export default function Invitation() {
 
           <Name
             honorific={couple.bride.honorific}
-            short={couple.bride.short}
-            formal={couple.bride.formal}
+            primary={couple.bride.primary}
+            secondary={couple.bride.secondary}
             lineage={couple.bride.lineage}
             city={couple.bride.city}
           />
@@ -100,8 +100,8 @@ export default function Invitation() {
 
           <Name
             honorific={couple.groom.honorific}
-            short={couple.groom.short}
-            formal={couple.groom.formal}
+            primary={couple.groom.primary}
+            secondary={couple.groom.secondary}
             lineage={couple.groom.lineage}
             city={couple.groom.city}
           />
@@ -130,14 +130,14 @@ export default function Invitation() {
 
 function Name({
   honorific,
-  short,
-  formal,
+  primary,
+  secondary,
   lineage,
   city,
 }: {
   honorific: string;
-  short: string;
-  formal: string;
+  primary: string;
+  secondary: string;
   lineage: readonly string[];
   city: string;
 }) {
@@ -149,7 +149,7 @@ function Name({
 
       <SplitText
         as="p"
-        text={`${short} (${formal})`}
+        text={`${primary} (${secondary})`}
         stagger={0.03}
         className="font-bride-display mt-2 text-[2.6rem] leading-[1] text-wine-900 sm:text-6xl"
       />

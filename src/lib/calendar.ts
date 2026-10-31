@@ -7,14 +7,14 @@ export function buildIcs(ritual: RitualItem): string {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Guddu & Avi//Bride Side Invitation//EN",
+    "PRODID:-//Janhavi & Bhavesh//Bride Side Invitation//EN",
     "CALSCALE:GREGORIAN",
     "BEGIN:VEVENT",
-    `UID:${ritual.id}-guddu-avi-2026@wedding`,
+    `UID:${ritual.id}-janhavi-bhavesh-2026@wedding`,
     `DTSTAMP:${ritual.calStart}`,
     `DTSTART:${ritual.calStart}`,
     `DTEND:${ritual.calEnd}`,
-    `SUMMARY:${escape(`${ritual.name} — Guddu & Avi`)}`,
+    `SUMMARY:${escape(`${ritual.name} — Janhavi & Bhavesh`)}`,
     `DESCRIPTION:${escape(ritual.blurb)}`,
     `LOCATION:${escape(ritual.venue)}`,
     "END:VEVENT",
@@ -28,7 +28,7 @@ export function downloadIcs(ritual: RitualItem) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `guddu-avi-${ritual.id}.ics`;
+  a.download = `janhavi-bhavesh-${ritual.id}.ics`;
   document.body.appendChild(a);
   a.click();
   a.remove();
