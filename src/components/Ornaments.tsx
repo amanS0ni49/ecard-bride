@@ -167,8 +167,11 @@ export function Arch({
         strokeDasharray="3 6"
         variants={draw}
       />
+      {/* A kalash finial — a diamond on a stem. This was a vertical stroke
+          crossed by a horizontal one, which on a Hindu wedding invitation
+          read unmistakably as a Christian cross. */}
       <motion.path
-        d="M150 6v34M136 40h28"
+        d="M150 6l7 9-7 9-7-9z M150 24v16"
         stroke={stroke}
         strokeOpacity="0.5"
         strokeWidth="1.2"

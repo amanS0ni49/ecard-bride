@@ -75,11 +75,10 @@ function Portrait({
     <article className="group flex flex-col items-center text-center">
       <motion.div
         className="relative w-full max-w-[290px]"
-        initial={{ opacity: 0, x: offset }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, x: offset, scale: 0.94 }}
+        whileInView={{ opacity: 1, x: 0, scale: 1 }}
         /* A low `amount` so the reveal starts as the portrait appears rather
-           than a third of the way up the screen — the arch used to sit there
-           visibly empty for over a second, which reads as broken. */
+           than a third of the way up the screen. */
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.9, delay, ease: EASE }}
       >
@@ -93,13 +92,16 @@ function Portrait({
           aria-hidden
         />
 
-        <motion.div
-          className="relative aspect-square overflow-hidden rounded-full"
-          initial={{ clipPath: "circle(0% at 50% 50%)" }}
-          whileInView={{ clipPath: "circle(71% at 50% 50%)" }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.9, delay: delay + 0.15, ease: EASE }}
-        >
+        {/* A plain div, NOT a motion component.
+            This used to reveal itself by animating `clip-path` from a closed
+            shape. Framer applies that initial value but will not interpolate
+            `inset()` / `circle()`, so the animation never ran and the
+            portraits stayed permanently invisible — the rings around them
+            still drew, which made it look like the images had failed to load.
+            The entrance now lives entirely on the wrapper above, animating
+            opacity and transform only, so the photograph cannot end up hidden
+            behind a property that never moves. */}
+        <div className="relative aspect-square overflow-hidden rounded-full">
           <Image
             src={person.portrait}
             alt={`Illustrated portrait of ${person.short} (${person.formal})`}
@@ -118,7 +120,7 @@ function Portrait({
             className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-wine-800/80 via-rosegold/40 to-champagne/30 mix-blend-color transition-opacity duration-[900ms] group-hover:opacity-0"
             aria-hidden
           />
-        </motion.div>
+        </div>
 
         {/* the side label, sitting on the outer ring */}
         <span className="font-bride-label absolute -top-9 left-1/2 -translate-x-1/2 bg-wine-950 px-4 text-[0.44rem] text-rosegold">
