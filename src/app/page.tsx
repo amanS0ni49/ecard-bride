@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, MotionConfig } from "framer-motion";
+import Blessings from "@/components/Blessings";
 import Doors from "@/components/Doors";
 import Controls from "@/components/Controls";
 import Couple from "@/components/Couple";
@@ -83,6 +84,7 @@ export default function Page() {
       <main>
         <Hero started={started} />
         <Invitation />
+        <Blessings />
         <Couple />
         <Rituals />
         <Programme />

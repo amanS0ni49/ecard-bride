@@ -95,6 +95,37 @@ export const invitation = {
     "We invite you most warmly to this sweet hour. Through our traditions, our blessings, our welcome and our regard, may every dear one join in our family's happiness and make our joy complete.",
 } as const;
 
+/**
+ * The elders who are no longer with us — Janhavi's nani-nana and dadi-dada —
+ * blessing the couple from above. This sits between the invitation and the
+ * couple, exactly where a printed card invokes its swargiya elders.
+ *
+ * `ratio` is the artwork's own aspect — the frame is built from it, and the
+ * edges dissolve into the wine ground rather than cropping. Swap the file
+ * and update this number.
+ */
+export const blessings = {
+  src: "/bride/familyBlessing.jpeg",
+  alt: "Janhavi and Bhavesh seated with folded hands as their late grandparents bless them from the heavens above",
+  kicker: "Swargiya Ashirwad",
+  title: "Blessings From Above",
+  sub: "The hands that raised her, raised once more in blessing.",
+  caption: "Watching Over Us",
+  captionEnglish: "Absent from the mandap, present in every prayer",
+  /** The two pairs of elders in the artwork, labelled as the family says them. */
+  names: [
+    {
+      label: "Her Dadi & Dada",
+      line: "Late Smt. Geeta Devi & Late Shri Om Prakash Ji Roda",
+    },
+    {
+      label: "Her Nani & Nana",
+      line: "Late Smt. Pushpa Devi & Late Shri Sitaram Ji Sunalia",
+    },
+  ],
+  ratio: "1024 / 1536",
+} as const;
+
 export type RitualItem = {
   id: string;
   /** The name guests will recognise. */
@@ -430,6 +461,7 @@ export const sender = {
 export const navSections = [
   { id: "home", label: "Home" },
   { id: "invitation", label: "Invitation" },
+  { id: "blessings", label: "Blessings" },
   { id: "couple", label: "Couple" },
   { id: "rituals", label: "Rituals" },
   { id: "programme", label: "Programme" },
