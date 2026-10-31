@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { baalManuhar, families } from "@/lib/data";
-import { Reveal, RoseRule, SectionHeading } from "./Ornaments";
+import { baalManuhar, families, familyPhoto } from "@/lib/data";
+import { CornerFiligree, Reveal, RoseRule, SectionHeading } from "./Ornaments";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -25,6 +26,8 @@ export default function Family() {
           title="With Love, From All of Us"
           sub="Every name below is waiting to welcome you."
         />
+
+        <FamilyPortrait />
 
         <div className="grid gap-x-10 gap-y-14 sm:grid-cols-2">
           {families.map((group, i) => (
@@ -77,6 +80,84 @@ export default function Family() {
         <BaalManuhar />
       </div>
     </section>
+  );
+}
+
+/**
+ * The family themselves, opening the section that lists them all by name.
+ *
+ * Fitting it to the card rather than dropping it on top:
+ *  - the frame takes the photograph's OWN aspect ratio, so nothing is cropped;
+ *  - it is masked to the same mehrab used everywhere else on the card, which
+ *    is also why the bokeh at the top of the shot is the part that gets cut;
+ *  - the edges are feathered into the wine ground with a vignette and a
+ *    bottom gradient, so no rectangle ever shows against the dark;
+ *  - it is left in full colour. The portraits in the couple section are
+ *    duotoned because their artwork is powder blue and fights the palette;
+ *    this photograph is already gold, cream and rose and belongs as it is.
+ *
+ * Entrance is opacity and scale only — never clip-path, which Framer applies
+ * but will not interpolate, leaving the picture permanently invisible.
+ */
+function FamilyPortrait() {
+  return (
+    <motion.figure
+      className="relative mx-auto mb-20 w-full max-w-[460px] sm:mb-24"
+      initial={{ opacity: 0, y: 36, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 1, ease: EASE }}
+    >
+      {/* the frame, offset outside the picture */}
+      <span
+        className="pointer-events-none absolute -inset-3 border border-champagne/25 sm:-inset-4"
+        style={{ borderRadius: "50% 50% 6px 6px / 30% 30% 6px 6px" }}
+        aria-hidden
+      />
+
+      <div
+        className="group relative overflow-hidden"
+        style={{
+          aspectRatio: familyPhoto.ratio,
+          borderRadius: "50% 50% 4px 4px / 30% 30% 4px 4px",
+        }}
+      >
+        <Image
+          src={familyPhoto.src}
+          alt={familyPhoto.alt}
+          fill
+          sizes="(max-width: 640px) 88vw, 460px"
+          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+        />
+
+        {/* feather the edges into the wine so the rectangle never shows */}
+        <span
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 72% 62% at 50% 45%, transparent 0%, rgba(22,4,15,0.45) 100%)",
+          }}
+          aria-hidden
+        />
+        <span
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-wine-950/85 to-transparent"
+          aria-hidden
+        />
+
+        <CornerFiligree corner="bl" className="size-8 opacity-50" />
+        <CornerFiligree corner="br" className="size-8 opacity-50" />
+      </div>
+
+      <figcaption className="mt-7 text-center">
+        <p className="font-bride-script text-4xl text-rosegold sm:text-5xl">
+          {familyPhoto.caption}
+        </p>
+        <p className="font-bride-label mt-3 text-[0.44rem] text-champagne/70">
+          {familyPhoto.captionEnglish}
+        </p>
+        <RoseRule className="mt-5" width={50} />
+      </figcaption>
+    </motion.figure>
   );
 }
 

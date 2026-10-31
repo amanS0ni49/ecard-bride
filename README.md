@@ -55,9 +55,9 @@ npm run dev -- -p 3001
    scroll away.
 3. **The Invitation** — the full formal wording and the Vishnu shloka, on an
    ivory leaf that tilts up into place as you scroll.
-4. **The Bride & The Groom** — Vadhu Paksh and Var Paksh side by side, each
-   portrait masked into an arch and wiped in from the floor. They sit in a
-   rose-gold duotone until you hover, when the colour comes back.
+4. **The Bride & The Groom** — Vadhu Paksh and Var Paksh side by side as
+   circular medallions. They sit in a rose-gold duotone until you hover, when
+   the colour comes back.
 5. **The Rituals** — the eight ceremonies as a gallery that scrolls *sideways*
    while the section stays pinned (GSAP ScrollTrigger). Each card has its date
    pill, times and an "Add to Calendar" `.ics` download. On a phone the same
@@ -67,9 +67,10 @@ npm run dev -- -p 3001
    on the left and swapping as you scroll through the four days.
 7. **The Venue** — Bhakhar Paradise, with Google Maps directions, and both
    households' addresses and phone numbers.
-8. **With Love, From All of Us** — Uttarakanshi, Swagatkarta, Darshanabhilashi,
-   Janwai Paksh and Nanihal Paksh, plus the **Baal Manuhar** children's
-   invitation, which is the best thing on the printed card.
+8. **With Love, From All of Us** — opens with the family portrait under a
+   *Padharo Sa*, then Uttarakanshi, Swagatkarta, Darshanabhilashi, Janwai
+   Paksh and Nanihal Paksh, plus the **Baal Manuhar** children's invitation,
+   which is the best thing on the printed card.
 9. **RSVP** — a form that composes a WhatsApp message to the bride-side number.
    No backend, no database; the guest presses send themselves.
 10. **Footer** — the Preshak block from the back of the envelope.
@@ -111,20 +112,64 @@ things make it sit *in* the card rather than on top of it:
 To swap it, overwrite that file with another **portrait 2:3** image — subjects
 centred, a little headroom — and nothing in the code needs to change.
 
+### The two portraits, and why the groom is on the left
+
+`public/art/bride.jpg` and `public/art/groom.jpg` are square medallions that
+carry their own gold ring, dashed outer ring and lotus motifs.
+
+- **They are framed as circles, not arches.** Cropping a square medallion into
+  a 4:5 arch cut that ring off top and bottom. As a circle it survives intact
+  and becomes the frame.
+- **The groom is on the left on purpose.** In the artwork the bride is turned
+  to her right (she looks toward the left edge of her frame) and the groom the
+  other way, so bride-left/groom-right had the two of them looking away from
+  each other, out of the page. Swapped, they face each other across the
+  divider. If you replace the artwork with differently-facing portraits, swap
+  the two `<Portrait>` lines in `src/components/Couple.tsx` back.
+
+### The family portrait
+
+`public/bride/family.jpg` opens the family section. The frame is built from
+the photograph's own aspect ratio (`familyPhoto.ratio` in `src/lib/data.ts`),
+so it is never cropped; it is masked to the same mehrab used elsewhere, and
+its edges are feathered into the wine ground. Unlike the couple medallions it
+is left in full colour — it is already gold, cream and rose, so it belongs as
+it is. Swap the file and update `ratio` to match.
+
 ### Ritual images
 
 `public/festivities/*.png` are illustrated scenes, mapped to rituals in
 `src/lib/data.ts`. Swap the files or repoint `image` / `imageAlt` there.
 
-### Swap in a licensed song
+### The music, and swapping in a real song
 
-`public/audio/wedding-theme.wav` is an original royalty-free instrumental. To
-use a different track, drop your file in `public/audio/` and change `SRC` at
-the top of `src/lib/audio.ts`. An `.mp3` will be far smaller than the `.wav`.
+`public/audio/wedding-theme.wav` is an **original royalty-free instrumental
+written for this project** — a soothing North-Indian wedding cue: a tanpura
+drone under a santoor pluck, a harmonium pad and a slow bansuri line, in a
+Khamaj-ish mode at 70 BPM. Regenerate or edit it with:
 
-Popular film songs are copyrighted. For a private invitation link shared with
-guests this is rarely an issue in practice, but if the page is public, prefer a
-licensed or royalty-free track.
+```bash
+python3 scripts/generate-music.py
+```
+
+It is a 27.4-second seamless loop (the render overruns the loop and folds the
+tail back over the head, so there is no click at the wrap).
+
+**To use an actual song instead** — put the file in `public/audio/` and change
+one line at the top of `src/lib/audio.ts`:
+
+```ts
+const SRC = "/audio/your-song.mp3";
+```
+
+That is the whole change. An `.mp3` will be far smaller than the bundled
+`.wav`, and nothing else needs touching.
+
+One caution, so the decision is yours and informed: commercial film and folk
+recordings are copyrighted in both the recording *and* the underlying tune.
+For a private invitation link shared with family this is rarely an issue in
+practice. If the page is public or indexed, prefer a licensed track, a
+royalty-free one, or the instrumental above.
 
 ### The share preview
 

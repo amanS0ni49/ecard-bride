@@ -367,6 +367,20 @@ export const families = [
   },
 ] as const;
 
+/**
+ * The family portrait at the head of the family section.
+ * `ratio` is the photograph's own aspect — the frame is built from it so the
+ * picture is never cropped. Swap the file and update these two numbers.
+ */
+export const familyPhoto = {
+  src: "/bride/family.jpg",
+  alt: "The Roda family together at the ceremony",
+  /** Rajasthani for "do come" — the welcome this family would actually say. */
+  caption: "Padharo Sa",
+  captionEnglish: "Do come — our home is waiting for you",
+  ratio: "1119 / 1200",
+} as const;
+
 /** The children's invitation printed at the very bottom of the card. */
 export const baalManuhar = {
   title: "Baal Manuhar",

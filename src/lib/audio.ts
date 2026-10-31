@@ -1,11 +1,17 @@
 /**
- * One shared <audio> element for the whole page, so the envelope-opening tap
- * and the floating toggle button drive the same track.
+ * One shared <audio> element for the whole page, so the latch tap on the
+ * doors and the floating toggle button drive the same track.
  *
- * The track is an original, royalty-free cinematic wedding cue generated for
- * this site — see README.md for how to swap in a licensed song instead.
+ * Currently playing a 35-second clip of "Baghan Vichon Main Te Tode Tere Layi
+ * Gulaab Ve" (Alfaaz / Hamza Malik), supplied by the family for their own
+ * invitation. It loops, so it restarts audibly after ~35s — that is the
+ * nature of a song clip rather than a composed loop.
+ *
+ * The original royalty-free instrumental written for this card is still in
+ * the repo at /audio/wedding-theme.wav (see scripts/generate-music.py); point
+ * SRC back at it to use that instead. Swapping tracks is this one line.
  */
-const SRC = "/audio/wedding-theme.wav";
+const SRC = "/audio/gulaab.mp3";
 const VOLUME = 0.32;
 const FADE_MS = 900;
 
