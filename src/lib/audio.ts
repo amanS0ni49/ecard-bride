@@ -2,16 +2,15 @@
  * One shared <audio> element for the whole page, so the latch tap on the
  * doors and the floating toggle button drive the same track.
  *
- * Currently playing a 35-second clip of "Baghan Vichon Main Te Tode Tere Layi
- * Gulaab Ve" (Alfaaz / Hamza Malik), supplied by the family for their own
- * invitation. It loops, so it restarts audibly after ~35s — that is the
- * nature of a song clip rather than a composed loop.
+ * Currently playing "Kudmayi" (Sachet Tandon), supplied by the family for
+ * their own invitation. Full track rather than a clip, so the loop point is
+ * far enough out that most guests will never reach it.
  *
- * The original royalty-free instrumental written for this card is still in
- * the repo at /audio/wedding-theme.wav (see scripts/generate-music.py); point
- * SRC back at it to use that instead. Swapping tracks is this one line.
+ * The earlier clip is still at /audio/gulaab.mp3, and the original
+ * royalty-free instrumental written for this card at /audio/wedding-theme.wav
+ * (see scripts/generate-music.py). Swapping tracks is this one line.
  */
-const SRC = "/audio/gulaab.mp3";
+const SRC = "/audio/kudmayi.mp3";
 const VOLUME = 0.32;
 const FADE_MS = 900;
 
