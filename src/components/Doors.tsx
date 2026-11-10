@@ -205,10 +205,10 @@ export default function Doors({
         className="relative aspect-2/3 h-[min(72vh,640px)] w-auto max-w-[84vw]"
         style={{ perspective: 1600 }}
       >
-        {/* The doorway, and the family waiting in it.
-            The photograph is 2:3 and the doorway is ~0.69:1, so masking it to
-            the mehrab crops barely twenty pixels — the arch already in the
-            picture lands almost exactly on the arch of the frame. */}
+        {/* The doorway, and Bappa waiting in it — the first darshan before a
+            single card is read. The photograph is 3:4 against a 2:3 frame, so
+            cover trims a sliver off either side; the idol is centred in the
+            shot and lands centred in the mehrab. */}
         <div
           className="absolute inset-0 overflow-hidden bg-wine-900"
           style={{ borderRadius: ARCH }}
@@ -220,7 +220,7 @@ export default function Doors({
                 in Next 16 — eager + high fetch priority is the replacement
                 that does not also claim to be the LCP element. */}
             <Image
-              src="/bride/welcome.jpg"
+              src="/bride/lalbaugcha-raja-2025.jpeg"
               alt=""
               fill
               loading="eager"
@@ -271,15 +271,24 @@ export default function Doors({
           }}
         >
           <span className="absolute inset-0 animate-pulse-ring rounded-full border border-champagne/60" />
-          <svg viewBox="0 0 48 48" className="size-9 sm:size-11" fill="none" aria-hidden>
-            <path
-              d="M24 6c6 7 6 12 0 18-6-6-6-11 0-18Z"
-              fill="#3f0f2b"
-              fillOpacity="0.8"
-            />
-            <circle cx="24" cy="29" r="7" stroke="#3f0f2b" strokeOpacity="0.8" strokeWidth="2" />
-            <path d="M24 36v6M18 42h12" stroke="#3f0f2b" strokeOpacity="0.8" strokeWidth="2" />
-          </svg>
+
+          {/* The monogram — Guddu & Avi — struck into the brass like a seal.
+              A hairline ring holds the letters off the edge of the knob, and
+              the pale shadow sitting a pixel below the dark fill is what reads
+              as "engraved" rather than "printed" at this size. */}
+          <span
+            aria-hidden
+            className="absolute inset-[0.6rem] rounded-full border border-[#3f0f2b]/25 sm:inset-[0.7rem]"
+          />
+          <span
+            aria-hidden
+            className="font-bride-display relative flex items-center gap-[0.06em] text-[1.65rem] leading-none sm:text-[2rem]"
+            style={{ color: "#3f0f2b", textShadow: "0 1px 0 rgba(255,241,214,0.5)" }}
+          >
+            G
+            <span className="font-bride-script text-[0.58em] opacity-75">&amp;</span>
+            A
+          </span>
         </button>
       </div>
 

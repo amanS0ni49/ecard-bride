@@ -8,6 +8,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { couple, meta } from "@/lib/data";
 import Countdown from "./Countdown";
@@ -105,9 +106,42 @@ export default function Hero({ started }: { started: boolean }) {
         style={{ y: lift }}
         className="relative z-20 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 pt-20 pb-8 text-center"
       >
-        <motion.p
+        {/* Bappa at the head of the card. The first invitation goes to Him, so
+            He sits above the invocation rather than beside it. Kept small on
+            purpose — the names are the hero, this is the tilak on top of them.
+            The artwork is a cut-out with no ground of its own, so there is no
+            frame here: the murti stands free on the wine, over a warm bloom
+            that keeps it from reading as pasted on. */}
+        <motion.div
           variants={fade}
           custom={0}
+          initial="hidden"
+          animate={animate}
+          style={{ opacity: centreFade }}
+          className="relative mb-5 flex shrink-0 justify-center sm:mb-6"
+          aria-hidden
+        >
+          <span
+            className="pointer-events-none absolute top-1/2 left-1/2 size-48 -translate-x-1/2 -translate-y-1/2 sm:size-64"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(240,212,156,0.20) 0%, rgba(240,212,156,0.06) 42%, transparent 70%)",
+            }}
+          />
+          <Image
+            src="/bride/lalbaugcha-raja-cutout.png"
+            alt=""
+            width={495}
+            height={744}
+            sizes="(max-width: 640px) 104px, 136px"
+            className="relative h-26 w-auto sm:h-34"
+            style={{ filter: "drop-shadow(0 14px 22px rgba(0,0,0,0.55))" }}
+          />
+        </motion.div>
+
+        <motion.p
+          variants={fade}
+          custom={1}
           initial="hidden"
           animate={animate}
           className="font-bride-label text-[0.5rem] text-rosegold sm:text-[0.6rem]"
@@ -118,7 +152,7 @@ export default function Hero({ started }: { started: boolean }) {
 
         <motion.p
           variants={fade}
-          custom={1}
+          custom={2}
           initial="hidden"
           animate={animate}
           className="font-bride-script mt-5 text-2xl text-blush-200/90 sm:text-3xl"

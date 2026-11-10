@@ -21,8 +21,8 @@ export default function Controls({ visible }: { visible: boolean }) {
 
   const share = async () => {
     const data = {
-      title: "Janhavi & Bhavesh — Wedding Invitation",
-      text: "You are invited to the wedding of Janhavi (Guddu) & Bhavesh (Avi), 20 November 2026, Jaipur.",
+      title: "Guddu & Avi — Wedding Invitation",
+      text: "You are invited to the wedding of Guddu (Janhavi) & Avi (Bhavesh), 20 November 2026, Jaipur.",
       url: window.location.href,
     };
     if (navigator.share) {

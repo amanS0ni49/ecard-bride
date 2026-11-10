@@ -12,11 +12,12 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  *
  * Two things about the layout are deliberate:
  *
- * 1. THE GROOM IS ON THE LEFT. In the supplied artwork the bride is turned to
- *    her right (she looks towards the left edge of her frame) and the groom is
- *    turned the other way. Bride-left/groom-right therefore has the two of
- *    them looking away from each other, out of the page. Swapping them points
- *    both inwards, so they face each other across the divider.
+ * 1. THE BRIDE IS FIRST. This is the bride's side card, so she leads — left of
+ *    the divider on desktop, top of the stack on mobile. The cost is that the
+ *    supplied artwork has her turned to her right and the groom turned the
+ *    other way, so in this order the two look outwards rather than at each
+ *    other. Precedence wins over the gaze; swap the two lines below to put the
+ *    groom first and point them inwards again.
  *
  * 2. THE PORTRAITS ARE CIRCLES, NOT ARCHES. The artwork is a square medallion
  *    that already carries its own gold ring, dashed outer ring and lotus
@@ -52,8 +53,8 @@ export default function Couple() {
             aria-hidden
           />
 
-          <Portrait person={couple.groom} from="left" />
-          <Portrait person={couple.bride} from="right" delay={0.12} />
+          <Portrait person={couple.bride} from="left" />
+          <Portrait person={couple.groom} from="right" delay={0.12} />
         </div>
       </div>
     </section>

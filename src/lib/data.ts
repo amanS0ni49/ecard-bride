@@ -22,15 +22,14 @@ export const meta = {
 /**
  * `primary` is the name set large everywhere on the card; `secondary` is the
  * one that sits under it in script and in brackets. The printed invitation
- * leads with the pet names — Guddu (Janhavi), Avi (Bhavesh) — but the family
- * asked for the given names to lead on the site, so the two are the other way
- * round here. Swap the values back in this one place to reverse it; nothing
- * else in the card needs to change.
+ * leads with the pet names — Guddu (Janhavi), Avi (Bhavesh) — and the site now
+ * follows it. Swap the two values in this one place to lead with the given
+ * names instead; nothing else in the card needs to change.
  */
 export const couple = {
   bride: {
-    primary: "Janhavi",
-    secondary: "Guddu",
+    primary: "Guddu",
+    secondary: "Janhavi",
     honorific: "Ayushmati",
     role: "The Bride",
     side: "Vadhu Paksh",
@@ -43,8 +42,8 @@ export const couple = {
     ],
   },
   groom: {
-    primary: "Bhavesh",
-    secondary: "Avi",
+    primary: "Avi",
+    secondary: "Bhavesh",
     honorific: "Ayushman",
     role: "The Groom",
     side: "Var Paksh",
@@ -105,7 +104,7 @@ export const invitation = {
  * and update this number.
  */
 export const blessings = {
-  src: "/bride/familyBlessing.jpeg",
+  src: "/bride/aashirvad.jpeg",
   alt: "Janhavi and Bhavesh seated with folded hands as their late grandparents bless them from the heavens above",
   kicker: "Swargiya Ashirwad",
   title: "Blessings From Above",
@@ -188,7 +187,7 @@ export const rituals: RitualItem[] = [
     blurb:
       "Before a single card is posted, the first invitation goes to Bappa. Nothing in this house starts without His blessing.",
     venue: "At the residence — Om Niwas, Jaipur",
-    image: "/festivities/ganesh-nimantran-2.png",
+    image: "/bride/ganeshji.png",
     imageAlt: "The first wedding invitation offered to Ganesh ji",
     calStart: "20261111T033000Z",
     calEnd: "20261111T053000Z",
@@ -204,7 +203,7 @@ export const rituals: RitualItem[] = [
     blurb:
       "Turmeric on the hands, marigolds everywhere, and absolutely no chance of staying clean. Wear something you don't love.",
     venue: "Bhakhar Paradise, Jaipur",
-    image: "/festivities/haldi-2.png",
+    image: "/bride/haldi.jpeg",
     imageAlt: "Janhavi glowing with haldi, surrounded by marigolds",
     calStart: "20261119T043000Z",
     calEnd: "20261119T073000Z",
@@ -220,7 +219,7 @@ export const rituals: RitualItem[] = [
     blurb:
       "The nanihal arrives with gifts, sweets and blessings — the afternoon the mother's family takes over the house.",
     venue: "Bhakhar Paradise, Jaipur",
-    image: "/festivities/mayra.png",
+    image: "/bride/chaakbhat.png",
     imageAlt: "The maternal family arriving with gifts and blessings",
     calStart: "20261119T073000Z",
     calEnd: "20261119T093000Z",
@@ -268,11 +267,11 @@ export const rituals: RitualItem[] = [
     blurb:
       "The groom's procession reaches our gate — band, dhol, lights and the whole street watching. Be outside for this one.",
     venue: "Bhakhar Paradise, Jaipur",
-    image: "/festivities/swagat-baraat.jpg",
+    image: "/bride/baarat.png",
     imageAlt:
       "The groom arriving on a decorated white horse as the tilak is applied at the gate",
     // portrait photograph in a landscape card — bias the crop up to the faces
-    focus: "50% 38%",
+    focus: "50% 30%",
     calStart: "20261120T140000Z",
     calEnd: "20261120T150000Z",
   },
@@ -422,12 +421,12 @@ export const families = [
  * picture is never cropped. Swap the file and update these two numbers.
  */
 export const familyPhoto = {
-  src: "/bride/family.jpg",
+  src: "/bride/famm.png",
   alt: "The Roda family together at the ceremony",
   /** Rajasthani for "do come" — the welcome this family would actually say. */
   caption: "Padharo Sa",
   captionEnglish: "Do come — our home is waiting for you",
-  ratio: "1119 / 1200",
+  ratio: "1122 / 1402",
 } as const;
 
 /** The children's invitation printed at the very bottom of the card. */

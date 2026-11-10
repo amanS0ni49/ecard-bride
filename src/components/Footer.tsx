@@ -13,7 +13,7 @@ export default function Footer() {
         <Marquee
           baseVelocity={-18}
           items={[
-            "Janhavi & Bhavesh",
+            "Guddu & Avi",
             "20 · 11 · 2026",
             "Bhakhar Paradise, Jaipur",
             meta.occasion,
