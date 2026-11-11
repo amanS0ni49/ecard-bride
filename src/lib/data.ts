@@ -194,7 +194,7 @@ export const rituals: RitualItem[] = [
   },
   {
     id: "haldi",
-    name: "Hald Hath Baan",
+    name: "Haldi Hath Baan",
     english: "The Haldi",
     day: "Thursday",
     date: "19 November 2026",
